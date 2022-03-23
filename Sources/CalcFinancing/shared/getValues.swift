@@ -24,24 +24,32 @@ func getInt(msg: String) -> Int {
     return 0
 }
 
+//func getDouble(msg: String) -> Double {
+//    let input: String? = formatDoubleInput(msg: msg) // recebe uma string formatada, sem % e com , trocada por .
+//    let msgAlert = "Valor inválido! Por favor, digite novamente: "
+//
+//    var optional = true
+//
+//    while(optional) {
+//        if let string = input, let number = Double(string) { // verifica se veio algo no input
+//            let numDouble = checkDoubleValue(value: number, msg: msgAlert) // verifica se é maior que 0.0, se digitou numeros
+//            optional = true
+//            return numDouble
+//        } else {
+//            print(optional)
+//            optional = false
+//        }
+//    }
+//
+//    return 0.0
+//}
+
 func getDouble(msg: String) -> Double {
-    let input: String? = formatDoubleInput(msg: msg) // recebe uma string formatada, sem % e com , trocada por .
-    let msgAlert = "Valor inválido! Por favor, digite novamente: "
-    
-    var optional = true
-    
-    while(optional) {
-        if let string = input, let number = Double(string) { // verifica se veio algo no input
-            let numDouble = checkDoubleValue(value: number, msg: msgAlert) // verifica se é maior que 0.0, se digitou numeros
-            optional = true
-            return numDouble
-        } else {
-            print(optional)
-            optional = false
-        }
-    }
-    
-    return 0.0
+  let input: String? = formatDoubleInput(msg: msg) // recebe uma string formatada, sem % e com , trocada por .
+  if let string = input, let number = Double(string) {
+    return number
+  }
+  return 0.0
 }
 
 func formatDoubleInput(msg: String) -> String {
@@ -54,16 +62,16 @@ func formatDoubleInput(msg: String) -> String {
     return formattedValue
 }
 
-func checkDoubleValue(value: Double, msg: String) -> Double {
-    var valueFinal: Double = value
-    
-    while(valueFinal == 0.0){
-        let valueValidated = getDouble(msg: msg)
-        valueFinal = valueValidated
-    }
+//func checkDoubleValue(value: Double, msg: String) -> Double {
+//    var valueFinal: Double = value
+//
+//    while(valueFinal == 0.0){
+//        let valueValidated = getDouble(msg: msg)
+//        valueFinal = valueValidated
+//    }
 //    print(valueFinal)
-    return valueFinal
-}
+//    return valueFinal
+//}
 //
 //func checkNilValue(value: String, msg: String) -> Double {
 //    var valueAux: Double?

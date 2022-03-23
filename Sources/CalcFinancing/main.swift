@@ -6,26 +6,26 @@
 import Foundation
 
 
-var valorLiqFinanciado: Double
-var qtdeParcelas: Double
-var taxaJuros: Double
+var financedLiqValue: Double
+var numberOfParcel: Double
+var interestRate: Double
 
-var valorParcela: Double
-var valorJurosParcela: Double
-var valorAmortizacaoParcela: Double
-var totalJuros: Double
-var AmortizacaoParcela: Double
-var somaFinal: Double
+var parcelValue: Double
+var interestValuePerParcel: [Double]
+var amortizationPerParcel: [Double]
+var debitValue: [Double]
+//var totalInterest: Double
+//var totalPayable: Double
 
 
 
-valorLiqFinanciado = getDouble(msg: "Digite o valor que deseja financiar: ")
+financedLiqValue = getDouble(msg: "Digite o valor que deseja financiar: ")
 
-qtdeParcelas = getDouble(msg: "Em quantas parcelas deseja realizar o pagamento? ")
+numberOfParcel = getDouble(msg: "Em quantas parcelas deseja realizar o pagamento? ")
 
-taxaJuros = getDouble(msg: "Digite a taxa de juros ao mês (em porcentagem): ") / 100
+interestRate = getDouble(msg: "Digite a taxa de juros ao mês (em porcentagem): ") / 100
 
-valorParcela = calcValorParcela(valorLiqFinanciado: valorLiqFinanciado, taxaJuros: taxaJuros, qtdeParcelas: qtdeParcelas)
+parcelValue = Calculator().calcParcelValue(financedLiqValue: financedLiqValue, interestRate: interestRate, numberOfParcel: numberOfParcel)
 
 
 
@@ -33,9 +33,9 @@ func printValues(valorLiqFinanciado: Double, taxaJuros: Double, qtdeParcelas: Do
     print("Valor Líquido Financiado: \(valorLiqFinanciado)")
     print("Quantidade de Parcelas: \(qtdeParcelas)")
     print("Taxa de Juros (a.m.): \(taxaJuros * 100)%")
-    print("O valor fixo da parcela é de R$ \(String(format: "%.2f", valorParcela))")
+    print("O valor fixo da parcela é de R$ \(String(format: "%.2f", parcelValue))")
 }
 
 
-printValues(valorLiqFinanciado: valorLiqFinanciado, taxaJuros: taxaJuros, qtdeParcelas: qtdeParcelas)
+printValues(valorLiqFinanciado: financedLiqValue, taxaJuros: interestRate, qtdeParcelas: numberOfParcel)
 

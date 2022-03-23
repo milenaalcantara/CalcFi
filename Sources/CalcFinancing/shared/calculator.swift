@@ -7,15 +7,18 @@
 
 import Foundation
 
-
-func calcValorParcela(valorLiqFinanciado: Double, taxaJuros: Double, qtdeParcelas: Double) -> Double {
-    let valorParcela = valorLiqFinanciado * ((pow((1 + taxaJuros), qtdeParcelas) * taxaJuros) / (pow((1 + taxaJuros), qtdeParcelas) - 1))
+struct Calculator {
     
-    return valorParcela
-}
+    func calcParcelValue(financedLiqValue: Double, interestRate: Double, numberOfParcel: Double) -> Double {
+        let parcelValue = financedLiqValue * ((pow((1 + interestRate), numberOfParcel) * interestRate) / (pow((1 + numberOfParcel), numberOfParcel) - 1))
+        
+        return parcelValue
+    }
 
-func calcValorJuros(valorLiqFinanciado: Double, taxaJuros: Double) -> Double {
-    let valorJuros = valorLiqFinanciado * taxaJuros
+    func calcRateValue(financedLiqValue: Double, interestRate: Double) -> Double {
+        let rateValue = financedLiqValue * interestRate
+        
+        return rateValue
+    }
     
-    return valorJuros
 }
