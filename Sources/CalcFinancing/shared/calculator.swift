@@ -16,9 +16,11 @@ struct Calculator {
     }
 
     func calcRateValue(financedLiqValue: Double, interestRate: Double) -> Double {
-        let rateValue = financedLiqValue * interestRate
-        
-        return rateValue
+        return financedLiqValue * interestRate
+    }
+    
+    func calcAmotizedValue(parcelValue: Double, interest: Double) -> Double {
+      return parcelValue - interest
     }
     
 }

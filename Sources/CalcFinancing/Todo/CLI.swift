@@ -58,7 +58,7 @@ class CLI {
                 print("Volte sempre!")
                 exit(0)
             case 1:
-                print("Nova Simulação!")
+                newFinancing()
             default:
                 print("\nOpção inválida!")
         }
@@ -149,7 +149,7 @@ class CLI {
         let financedLiqValue = askForDouble(question: "Qual o valor líquido do \(financingName) que deseja financiar?")
         let numberOfParcel = askForInt(question: "Em quantas parcelas deseja realizar o pagamento?")
         let interestRate = askForDouble(question: "Qual a taxa de juros cobrada pelo banco (a.m.)?")
-        
-        
     }
+    
+    
 }
