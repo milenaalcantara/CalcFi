@@ -8,6 +8,9 @@
 import Foundation
 
 struct Calculator {
+    var interestValuesPerParcel: [Double]
+    var amortizationsPerParcel: [Double]
+    var debitValues: [Double]
     
     func calcParcelValue(financedLiqValue: Double, interestRate: Double, numberOfParcel: Double) -> Double {
         let parcelValue = financedLiqValue * ((pow((1 + interestRate), numberOfParcel) * interestRate) / (pow((1 + numberOfParcel), numberOfParcel) - 1))
@@ -15,12 +18,14 @@ struct Calculator {
         return parcelValue
     }
 
-    func calcRateValue(financedLiqValue: Double, interestRate: Double) -> Double {
-        return financedLiqValue * interestRate
+    func calcRateValue(debitValue: Double, interestRate: Double) {
+        let rate = debitValue * interestRate
+        interestValuesPerParcel.append(rate)
     }
     
     func calcAmotizedValue(parcelValue: Double, interest: Double) -> Double {
-      return parcelValue - interest
+        let amortized = parcelValue - interest
+        amortizationsPerParcel.append(amortized)
     }
     
 }

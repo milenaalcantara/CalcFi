@@ -13,6 +13,7 @@ class CLI {
     var lastChoosedOption = 99
     var numSimulatorPerUser = 0
     var inputManager = InputManager(type: .readLine)
+    var calculator = Calculator()
     
     
     func run() {
@@ -149,6 +150,11 @@ class CLI {
         let financedLiqValue = askForDouble(question: "Qual o valor líquido do \(financingName) que deseja financiar?")
         let numberOfParcel = askForInt(question: "Em quantas parcelas deseja realizar o pagamento?")
         let interestRate = askForDouble(question: "Qual a taxa de juros cobrada pelo banco (a.m.)?")
+    }
+    
+    func clearDataCalculator() {
+        calculator.debitValues.removeAll()
+        print("removido? : \()") //continuar
     }
     
     
