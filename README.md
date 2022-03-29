@@ -11,7 +11,7 @@ Os financiamentos realizados por bancos são normalmente baseados em tabelas, on
 
 Uma parte da população que adere ao financiamento, por muitas vezes não tem consciências dos detalhes por tras dos financiamentos, desconhecendo o funcionamento desse padrão de compra. O grande objetivo deste projeto é mostrar os valores, com mais riqueza de detalhes, por detrás do valor da parcela e dessa forma conscientizar o usuário que será um possível cliente de um financiamento.
 
-## Fncionalidades
+## Funcionalidades
  
 * Calcula valor da parcela total
 * Calcula valor de juros por parcela
