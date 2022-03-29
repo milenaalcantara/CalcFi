@@ -13,17 +13,21 @@ class CLI {
     var lastChoosedOption = 99
     var numSimulatorPerUser = 0
     var inputManager = InputManager(type: .readLine)
-    var calculator = Calculator()
-    
+
+    var financingName: String = ""
+    var financedLiqValue: Double = 0.0
+    var numberOfParcel: Int = 1
+    var interestRate: Double =  0.0
+
     
     func run() {
-        while lastChoosedOption != 0 {
+        if(numSimulatorPerUser == 0) {
             firstTime()
-
-            printMainMenu()
-            askForAnOption()
-            runMenuOption()
+            numSimulatorPerUser += 1
         }
+        printMainMenu()
+        lastChoosedOption = askForAnOption()
+        runMenuOption()
     }
 
     func firstTime() {
@@ -33,12 +37,23 @@ class CLI {
         Vamos começar?!
         """
         
-        
-        if(numSimulatorPerUser == 0) {
-            print(firstTimeGreeting)
-        }
+        print(firstTimeGreeting)
         
         numSimulatorPerUser += 1
+    }
+
+    func bye(){
+        let messageBye = """
+
+        ---------------------------------------------------------------------------
+        Obrigado por usar nosso sistema, esperamos que tenha sido útil para você ☺️
+
+        Volte sempre!!!
+        ---------------------------------------------------------------------------
+        
+        """
+
+        print(messageBye)
     }
 
     func printMainMenu() {
@@ -56,12 +71,16 @@ class CLI {
     func runMenuOption() {
         switch lastChoosedOption {
             case 0:
-                print("Volte sempre!")
+                bye()
                 exit(0)
             case 1:
-                newFinancing()
+                print("Nova Simulação!")
+                runMenuTable()
+                lastChoosedOption = askForAnOption()
+                runTableOption()
             default:
                 print("\nOpção inválida!")
+                resolveInvalidMainOption()
         }
     }
 
@@ -75,16 +94,25 @@ class CLI {
 
         """
         print(menu)
+
+        // feature: 3 - Comparar tabela PRICE e SAC
     }
 
-    func TableOption() {
+    func runTableOption() {
         switch lastChoosedOption {
             case 1:
-                print("Tabela PRICE")
+                newFinancing()
+                let price = PRICE(financedLiqValue: self.financedLiqValue, interestRate: self.interestRate, numberOfParcel: self.numberOfParcel)
+
+                callTable(table: price)
             case 2:
-                print("Tabela SAC")
+                newFinancing()
+                let sac = SAC(financedLiqValue: self.financedLiqValue, interestRate: self.interestRate, numberOfParcel: self.numberOfParcel)
+
+                callTable(table: sac)
             default:
-                print("\nOpção inválida")
+                print("\nOpção inválida!")
+                resolveInvalidTableOption()
         }
     }
     
@@ -93,27 +121,27 @@ class CLI {
         print(question)
         guard let answer = inputManager.getInput() else{ // guard é como uma conferencia do valor
             print("Comando inválido")
-            exit(0)
+            return ""
         }
 
         return answer
     }
 
     func formatDoubleInput(value: String) -> String {
-        let formattedValue = inputManager.getInput()
+        let formattedValue = value
             .replacingOccurrences(of: "," , with: ".") // Substituir virgula
             .replacingOccurrences(of: "%" , with: "") // remover %
 
-        return formattedValuefunc
+        return formattedValue
     }
 
     func askForDouble(question: String) -> Double {
         print(question)
         var finalNumber: Double?
-        while finalNumber == nil {
+        while finalNumber == nil || finalNumber! < 0 {
             let answerString = inputManager.getInput()!
             finalNumber = Double(formatDoubleInput(value: answerString))
-            if finalNumber == nil {
+            if finalNumber == nil || finalNumber! < 0 {
                 print("Valor inválido, digite um número:")
             }
         }
@@ -124,11 +152,11 @@ class CLI {
     func askForInt(question: String) -> Int {
         print(question)
         var finalNumber: Int?
-        while finalNumber == nil {
+        while finalNumber == nil || finalNumber! < 0 {
             let answerString = inputManager.getInput()!
             finalNumber = Int(answerString)
-            if finalNumber == nil {
-                print("Input inválido, digite um número:")
+            if finalNumber == nil || finalNumber! < 0 {
+                print("Valor inválido, digite um número:")
             }
         }
 
@@ -144,18 +172,29 @@ class CLI {
         return option
     }
     
-    //Mark: System Funtionalities
+    func resolveInvalidMainOption() {
+        printMainMenu()
+        lastChoosedOption = askForAnOption()
+        runMenuOption()
+    }
+    
+    func resolveInvalidTableOption() {
+        runMenuTable()
+        lastChoosedOption = askForAnOption()
+        runTableOption()
+    }
+    
+    // Mark: System Funtionalities
     func newFinancing() {
-        let financingName = askForString(question: "Qual o bem que deseja financiar?")
-        let financedLiqValue = askForDouble(question: "Qual o valor líquido do \(financingName) que deseja financiar?")
-        let numberOfParcel = askForInt(question: "Em quantas parcelas deseja realizar o pagamento?")
-        let interestRate = askForDouble(question: "Qual a taxa de juros cobrada pelo banco (a.m.)?")
+        self.financingName = askForString(question: "Qual o bem que deseja financiar?")
+        self.financedLiqValue = askForDouble(question: "Qual o valor líquido do(a) \(self.financingName) que deseja financiar?")
+        self.numberOfParcel = askForInt(question: "Em quantas parcelas deseja realizar o pagamento?")
+        self.interestRate = askForDouble(question: "Qual a taxa de juros cobrada pelo banco (a.m.)?")
     }
-    
-    func clearDataCalculator() {
-        calculator.debitValues.removeAll()
-        print("removido? : \()") //continuar
+
+    func callTable(table: Table){
+        table.run()
+        self.run()
     }
-    
     
 }

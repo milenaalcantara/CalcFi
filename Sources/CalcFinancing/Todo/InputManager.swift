@@ -14,7 +14,7 @@ class InputManager {
         case readLine
     }
 
-    var type = InputType
+    var type: InputType
     var mockedValues: [String]
     var inputControl = 0
 
