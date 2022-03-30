@@ -57,3 +57,9 @@ swift run CalcFi
  + O valor que você pagará de juros em cada parcela (esse valor está embutido no valor da parcela)
  + O valor que você pagará de amortização em cada parcela (esse valor está embutido no valor da parcela)
  + O saldo devedor, que é o valor que você ainda estará devendo o banco após o pagamento da parcela.
+5. Logo após os dados acima, aparecerá novamente o menu inicial, escolha sua opção e aproveite.
+
+
+
+<h4 align='center' >Obrigada por chegar até aqui, espero que seja útil para você!</h4>
+<h4 align='center' >By Milena Alcântara ❤️</h4>
