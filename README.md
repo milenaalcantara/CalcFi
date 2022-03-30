@@ -20,5 +20,23 @@ Uma parte da população que adere ao financiamento, por muitas vezes não tem c
 * Permite escolher entre a tabela PRICE e SAC
 * Permite realizar novas simulações várias vezes
 
+## Como utilizar o sistema
 
+1. Em seu mac abra o terminal, vá até a pasta que deseja e clone o projeto digitando o seguinte comando:
+
+```
+git clone https://github.com/milenaalcantara/CalcFi.git
+```
+
+2. Entre no diretório do projeto com o comando abaixo:
+
+```
+cd CalcFi
+```
+
+3. Para utilizar as funcionalidades, ainda em seu terminal digite:
+
+```
+swift run CalcFi
+```
 
