@@ -61,5 +61,5 @@ swift run CalcFi
 
 
 
-<h4 align='center' >Obrigada por chegar até aqui, espero que seja útil para você!</h4>
-<h4 align='center' >By Milena Alcântara ❤️</h4>
+<h6 align='center' >Obrigada por chegar até aqui, espero que seja útil para você!</h6>
+<h6 align='center' >By Milena Alcântara ❤️</h6>
