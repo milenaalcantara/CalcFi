@@ -43,8 +43,17 @@ swift run CalcFi
 ### Passo a passo
 
 1. Ao começar, o sistema será apresentado um menu iniciar com dua opções, 'Realizar uma nova simulação' e 'Finalizar o sistema'
-2. Caso escolha a opção 'Realizar uma nova simulação', será solicitado alguns dados
+2. Caso escolha a opção 'Realizar uma nova simulação', irá surgir um segundo menu, agora escolha qual tabela gostaria de usar para realizar seu financiamento.
+
+** Obs.: Cada tabela possui influências diferentes em fins de cálculo. A tabela PRICE possui parcela fixa e amortização variável (crescente), já a tabela SAC é seu inverso, possui parcela variável (decrescente) e amortização fixa.
+
+3. Após escolher sua tabela, será necessário fornecer alguns dados
  + O nome do bem que deseja financiar (escreva por extenso, ex: carro)
  + O valor, líquido, do bem que deseja financiar
  + A quantidade de parcelas que deseja para finalizar o pagamento do financiamento
  + A taxa de juros que será cobrado ao mes (em porcentagem, ex: 1,74%) 
+4. Prontinho, o sistema retornará os valores calculados abaixo:
+ + O valor de cada parcela (valor de juros + valor da amortização)
+ + O valor que você pagará de juros em cada parcela (esse valor está embutido no valor da parcela)
+ + O valor que você pagará de amortização em cada parcela (esse valor está embutido no valor da parcela)
+ + O saldo devedor, que é o valor que você ainda estará devendo o banco após o pagamento da parcela.
