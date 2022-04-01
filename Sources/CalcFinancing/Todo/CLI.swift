@@ -86,11 +86,16 @@ class CLI {
 
     func runMenuTable() {
         let menu = """
+        
+        Aqui vai algumas informações importantes, atenção!!!
+        
+        * A tabela PRICE possui o valor da parcela fixa e amortização variável.
+        * A tabela SAC possui o valor da parcela variável e amortização fixa.
 
         Qual tabela deseja selecionar?
 
-        1 - PRICE
-        2 - SAC
+        1 - PRICE 
+        2 - SAC 
 
         """
         print(menu)
